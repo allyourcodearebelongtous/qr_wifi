@@ -69,11 +69,9 @@ so you'll have to duplicate each row:
 
 and then you need to prepare this as a list of strings (surround it with double quotes and add a comma at the end):
 
-```
-sed -i -e 's/\(.*\)/    "\1",/' qr_ascii.txt
-```
+`sed -i -e 's/\(.*\)/    "\1",/' qr_ascii.txt`
 
-But there is no need to create files or execute three command lines . 
+But there is no need to create temporary files or execute three command lines successively:
 
 #### Simple one-liner with output to stdout, replace SSID and PASSWD accordingly
 
