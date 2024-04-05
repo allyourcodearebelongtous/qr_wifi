@@ -73,9 +73,17 @@ and then you need to prepare this as a list of strings (surround it with double 
 sed -i -e 's/\(.*\)/    "\1",/' qr_ascii.txt
 ```
 
+But there is no need to create files or execute three command lines . 
+
+#### Simple one-liner with output to stdout, replace SSID and PASSWD accordingly
+
+```
+echo SSID PASSWD | ( read p1 p2; qrencode -t ASCII -m 0 "WIFI:S:$p1;T:WPA2;P:$p2;;" ) | sed -e '/\(.*\)/p' | sed -e 's/\(.*\)/    "\1",/'
+```
+
 #### Displaying QR Code on the display
 
-Now you can insert the contents of `qr_ascii.txt` to `qr_code` list in `main.py`.
+Now you can insert the contents of `qr_ascii.txt` or the output from the one-liner to `qr_code` list in `main.py`.
 
 You should also edit the `msg` list in `main.py` to your liking.
 I used `figlet` to create these.
